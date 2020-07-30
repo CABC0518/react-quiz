@@ -7,7 +7,7 @@ export default class Footer extends Component {
             backgroundColor: "grey",
         }
         return (
-            <div style={footerStyle} class="fixed-bottom mt-5">
+            <div style={footerStyle} class=" mt-5">
                 <h1 className="text-center">
                     This is Footer
                 </h1>

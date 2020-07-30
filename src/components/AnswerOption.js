@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class AnswerOption extends Component {
     render() {
         const answerOptionBtn = {
-            // width: "75vw",
+            width: "60vw",
             margin: "0 auto",
         }
         const listStyle = {
