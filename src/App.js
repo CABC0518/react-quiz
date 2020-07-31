@@ -42,14 +42,14 @@ export default class App extends Component {
       {
         id:5,
         category: "food",
-        question: "what is butter?",
+        question: "what is melon?",
         answerOptions: ["omena", "maito", "voi", "sipuri"],
         answer: "voi"
       },
     ],
-    counter: 0,
+    counter: 1,
     quiz: false,
-    category: ["food", "sports", "greeting", "animals", "numbers", "food", "sports", "greeting", "animals", "numbers", "sports", "greeting", "animals", "numbers", "food", "sports", "greeting", "animals", "numbers"]
+    category: ["food", "sports", "greeting", "animals", "numbers"]
   }
 
 
@@ -79,27 +79,34 @@ export default class App extends Component {
     const cards = this.state.category.map((category)=>(
       <Card category={category} startQuiz={this.startQuiz}></Card>
     ))
-    if(!this.state.quiz){
-      quiz = 
-      <div class="card-columns">
-        {cards}
-      </div>
-    }else{
-      quiz = 
-      <Quiz quiz={this.state.questions[this.state.counter]} counter={this.state.counter} updateCounter={this.updateCounter}></Quiz>
-    }
+    const quizRoute = this.state.category.map((category)=>(
+      <Route 
+      exact
+          path={"/" + category}
+          render={props=>(
+            <Quiz quiz={this.state.questions[this.state.counter]} counter={this.state.counter} updateCounter={this.updateCounter}></Quiz>
+          )}    
+      />
+    )) 
+
     return (
-      <div>
+      <Router>
+        <div>
         <Header></Header>
+        <Route exact path="/" render={props=>(
         <div class="container mt-3">
-          <div class="row">
-              <div class="">
-                  {quiz}
-              </div>
+        <div class="row">
+            <div class="card-columns">
+            {cards}
           </div>
         </div>
+      </div>
+        )} />
+        {quizRoute}
         <Footer></Footer>
       </div>
+      </Router>
+
     )
   }
 }
