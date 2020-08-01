@@ -7,7 +7,7 @@ export default class Quiz extends Component {
 
     render() {
         const answerOption = this.props.quiz.answerOptions.map((answerOption)=>(
-            <AnswerOption answerOption={answerOption} updateCounter={this.props.updateCounter}></AnswerOption>
+            <AnswerOption counter={this.props.counter} answerOption={answerOption} SetNextQuestion={this.props.SetNextQuestion} score={this.props.score}></AnswerOption>
         ))
         return(
             <div>
